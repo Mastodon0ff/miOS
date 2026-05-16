@@ -24,7 +24,7 @@ $(ISO): build
 	./limine/limine bios-install $(ISO)
 
 run: $(ISO)
-	qemu-system-x86_64 -M q35 -m 128M -cdrom $(ISO)
+	qemu-system-x86_64 -M q35 -m 128M -cdrom $(ISO) -serial stdio
 
 clean:
 	cargo clean
