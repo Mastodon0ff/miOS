@@ -46,3 +46,7 @@ pub fn serial_print_num(n: usize) {
         serial_write_byte(b);
     }
 }
+
+pub fn serial_print_char(c: u8) {
+    serial_write_byte(c);
+}

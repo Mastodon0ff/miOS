@@ -128,7 +128,7 @@ impl FramebufferWriter {
         }
     }
     pub fn print(&mut self, s: &str) {
-        let (char_w, char_h) = Self::psf2_char_size();
+        let (_char_w, char_h) = Self::psf2_char_size();
         for c in s.chars() {
             match c {
                 '\n' => {
@@ -169,6 +169,24 @@ impl FramebufferWriter {
         for &b in &buffer[i..] {
             self.putchar(self.cursor_x, self.cursor_y, b as char);
             self.cursor_x += 8;
+        }
+    }
+    pub fn print_char(&mut self, c: char) {
+        self.print(core::str::from_utf8(&[c as u8]).unwrap_or(""));
+    }
+    pub fn backspace(&mut self) {
+        if self.cursor_x >= CHAR_W {
+            self.cursor_x -= CHAR_W;
+        } else {
+            return;
+        }
+        for row in 0..CHAR_H {
+            for col in 0..CHAR_W {
+                let pixel = (self.cursor_y + row) * self.stride + (self.cursor_x + col);
+                unsafe {
+                    self.ptr.add(pixel).write_volatile(0x00000000);
+                }
+            }
         }
     }
 }
