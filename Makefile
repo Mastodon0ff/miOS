@@ -3,9 +3,13 @@ KERNEL = target/$(ARCH)/debug/miOS
 ISO = miOS.iso
 ISO_ROOT = iso_root
 
-.PHONY: all run clean
+.PHONY: all run clean setup
 
 all: $(ISO)
+
+setup:
+	git clone https://github.com/limine-bootloader/limine --branch=v8.x-binary --depth=1 limine
+	make -C limine
 
 build:
 	cargo build

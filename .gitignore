@@ -1,3 +1,7 @@
 /target/
+target/
+iso_root/
+miOS.iso
+limine/
 
 *.rs.bk
