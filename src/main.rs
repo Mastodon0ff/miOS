@@ -53,7 +53,7 @@ pub extern "C" fn _start() -> ! {
 
     let mut writer = FramebufferWriter::new(fb_ptr, stride, 10, 10);
     writer.clear_screen(stride, height);
-    writer.set_color(0x00FFFFFF);
+    writer.set_color(0x0000FFFF);
     writer.println("Welcome to miOS!");
     writer.set_color(0x00FFFFFF);
     writer.println("ts is so peak");

@@ -10,6 +10,8 @@ A simple rust-based x86_64 operating system.
 - Uses Limine bootloader
 - Framebuffer text rendering (Cozette font)
 - Serial Output for debugging in development
+- IDT and PIC modules
+- Keyboard driver for typing
 
 ## Dependencies:
 - Rust Nightly (doesnt work with standard rust)

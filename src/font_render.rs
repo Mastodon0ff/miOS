@@ -1,8 +1,8 @@
 use core::str::Bytes;
 
-pub static FONT: &[u8] = include_bytes!("../assets/cozette.psf");
-const CHAR_W: usize = 7;
-const CHAR_H: usize = 13;
+pub static FONT: &[u8] = include_bytes!("../assets/spleen-12x24.psf");
+const CHAR_W: usize = 12;
+const CHAR_H: usize = 24;
 const PSF2_HEADER_SIZE: usize = 32;
 
 pub struct FramebufferWriter {
