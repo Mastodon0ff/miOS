@@ -4,6 +4,7 @@ A simple rust-based x86_64 operating system.
 ## Contents:
 - [Features](#features)
 - [Dependencies](#dependencies)
+- [Modules](#modules)
 - [Build Proccess](#build-proccess)
 
 ## Features:
@@ -17,6 +18,9 @@ A simple rust-based x86_64 operating system.
 - Rust Nightly (doesnt work with standard rust)
 - qemu-system-x86_64 (to boot the kernel binary for testing)
 - xorriso (to create bootable iso image file)
+
+## Modules:
+~~placeholder~~
 
 ## Build Proccess:
 - clone the repo, then
