@@ -6,6 +6,7 @@ A simple rust-based x86_64 operating system.
 - [Dependencies](#dependencies)
 - [Modules](#modules)
 - [Build Proccess](#build-proccess)
+- [Notes](#notes)
 
 ## Features:
 - Uses Limine bootloader
@@ -27,3 +28,6 @@ A simple rust-based x86_64 operating system.
 - run 'make setup' in the parent folder
 - run 'make run' to compile, create iso image, and boot it in qemu
 - run 'make clean' to remove build artifacts.
+
+## Notes:
+- APIC implementation in progress

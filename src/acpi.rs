@@ -28,25 +28,30 @@ struct SdtHeader {
 
 pub fn init(rdsp_addr: u64, hhdm_offset: u64) {
     unsafe {
-        let rsdt_phys = *((rdsp_addr + 16) as *const u32) as u64;
-        let rsdt_addr = rsdt_phys + hhdm_offset;
-        serial_print("rsdt_phys: ");
-        serial_print_num(rsdt_phys as usize);
+        let rsdp = &*(rdsp_addr as *const Rsdp);
+        let xsdt_phys = rsdp.xsdt_addr as u64;
+        let xsdt_addr = xsdt_phys + hhdm_offset;
+        serial_print("xsdt_addr: ");
+        serial_print_num(xsdt_addr as usize);
         serial_print("\n");
 
-        let length = *((rsdt_addr + 4) as *const u32) as usize;
+        let xsdt = &*(xsdt_addr as *const SdtHeader);
+        let length = xsdt.length as usize;
         serial_print("rsdt_length: ");
         serial_print_num(length);
         serial_print("\n");
 
-        let num_entries = (length - 36) / 4;
+        let num_entries = (length - size_of::<SdtHeader>()) / 8;
         serial_print("num entries: ");
         serial_print_num(num_entries);
         serial_print("\n");
 
-        let entries = (rsdt_addr + 36) as *const u32;
+        let entries = (xsdt_addr + size_of::<SdtHeader>() as u64) as *const u64;
         for i in 0..num_entries {
-            let entry_phys = (*entries.add(i)) as u64;
+            let entry_phys = *entries.add(i);
+            if entry_phys == 0 {
+                continue;
+            }
             let entry_addr = entry_phys + hhdm_offset;
             serial_print("table: ");
             for j in 0..4u64 {

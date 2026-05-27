@@ -1,5 +1,5 @@
 ARCH = x86_64-mi_os
-KERNEL = target/$(ARCH)/debug/miOS
+KERNEL = target/$(ARCH)/release/miOS
 ISO = miOS.iso
 ISO_ROOT = iso_root
 
@@ -12,7 +12,7 @@ setup:
 	make -C limine
 
 build:
-	cargo build
+	cargo build --release
 
 $(ISO): build
 	mkdir -p $(ISO_ROOT)/boot/limine
