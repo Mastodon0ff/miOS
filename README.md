@@ -31,3 +31,4 @@ A simple rust-based x86_64 operating system.
 
 ## Notes:
 - APIC implementation in progress
+- Actually boots on real hardware (AMD and Intel x86_64 CPUs)
